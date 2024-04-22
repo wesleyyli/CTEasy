@@ -1,77 +1,76 @@
 export const userInputs = [
     {
-      id: 1,
+      id: "username",
       label: "Username",
       type: "text",
       placeholder: "john_doe",
     },
     {
-      id: 2,
+      id: "displayName",
       label: "Name and surname",
       type: "text",
       placeholder: "John Doe",
     },
     {
-      id: 3,
+      id: "email",
       label: "Email",
       type: "mail",
       placeholder: "john_doe@gmail.com",
     },
     {
-      id: 4,
+      id: "phone",
       label: "Phone",
       type: "text",
       placeholder: "+1 234 567 89",
     },
     {
-      id: 5,
+      id: "password",
       label: "Password",
       type: "password",
     },
     {
-      id: 6,
+      id: "address",
       label: "Address",
       type: "text",
       placeholder: "Elton St. 216 NewYork",
     },
-    {
-      id: 7,
-      label: "Country",
-      type: "text",
-      placeholder: "USA",
-    },
   ];
   
-  export const productInputs = [
+  export const contactInputs = [
     {
-      id: 1,
-      label: "Title",
+      id: "name",
+      label: "Name",
       type: "text",
-      placeholder: "Apple Macbook Pro",
+      placeholder: "John Doe",
     },
     {
-      id: 2,
-      label: "Description",
+      id: "company",
+      label: "Company/Institution",
       type: "text",
-      placeholder: "Description",
+      placeholder: "Company/Institution",
     },
     {
-      id: 3,
-      label: "Category",
+      id: "field",
+      label: "Field of Interest",
       type: "text",
-      placeholder: "Computers",
+      placeholder: "Field of Interest",
     },
     {
-      id: 4,
-      label: "Price",
+      id: "email",
+      label: "Email",
       type: "text",
-      placeholder: "100",
+      placeholder: "john_doe@gmail.com",
+    },{
+      id: "phone",
+      label: "Phone Number",
+      type: "text",
+      placeholder: "+1 234 567 89",
     },
     {
-      id: 5,
-      label: "Stock",
+      id: "donation",
+      label: "Donation",
       type: "text",
-      placeholder: "in stock",
+      placeholder: "$0",
     },
   ];
   

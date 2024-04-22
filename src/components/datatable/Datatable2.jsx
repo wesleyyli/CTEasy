@@ -1,33 +1,17 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { contactsColumns } from "../../datatablesource2";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { collection, getDocs, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase"
 
 const Datatable = () => {
   const [data, setData] = useState([]);
 
   useEffect(()=> {
-    // const fetchData = async () => {
-    //   let list = []
-    //   try {
-    //     const querySnapshot = await getDocs(collection(db, "users"));
-    //     querySnapshot.forEach((doc) => {
-    //       // doc.data() is never undefined for query doc snapshots
-    //       list.push({id: doc.id, ...doc.data()})
-    //   });
-    //   setData(list);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    
-    // };
-    // fetchData();
-
     // LISTEN (REALTIME)
-    const unsub = onSnapshot(collection(db, "users"), (snapShot) => {
+    const unsub = onSnapshot(collection(db, "contacts"), (snapShot) => {
       let list = [];
       snapShot.docs.forEach(doc=>{
         list.push({id: doc.id, ...doc.data()})
@@ -42,16 +26,16 @@ const Datatable = () => {
     };
   },[])
 
-
   const handleDelete = async(id) => {
     try {
-      await deleteDoc(doc(db, "users", id));
+      await deleteDoc(doc(db, "contacts", id));
     } catch (err) {
       console.log(err)
     }
     
     setData(data.filter((item) => item.id !== id));
   };
+
 
   const actionColumn = [
     {
@@ -61,7 +45,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={{pathname:`/contacts/${params.row.id}`, state:{test: true}}} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -78,15 +62,15 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
-        <Link to="/users/new" className="link">
+        Add New Contact
+        <Link to="/contacts/new" className="link">
           Add New
         </Link>
       </div>
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={contactsColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection

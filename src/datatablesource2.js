@@ -1,14 +1,14 @@
-export const userColumns = [
+export const contactsColumns = [
   { field: "id", headerName: "ID", width: 170 },
   {
-    field: "user",
-    headerName: "User",
+    field: "contact",
+    headerName: "Contact",
     width: 230,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
           <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
+          {params.row.name}
         </div>
       );
     },
@@ -25,8 +25,8 @@ export const userColumns = [
     width: 150,
   },
   {
-    field: "username",
-    headerName: "Username",
+    field: "company",
+    headerName: "Company",
     width: 160,
   },
 ];

@@ -5,7 +5,6 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useEffect, useState } from "react";
 import { collection, doc, setDoc, addDoc, serverTimestamp } from "firebase/firestore"; 
 import { auth, db, storage } from "../../firebase"
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom"
 
@@ -62,7 +61,6 @@ const New = ({ inputs, title }) => {
     file && uploadFile();
   },[file]);
 
-  console.log(data)
 
   const handleInput = (e) => {
     const id = e.target.id;
@@ -75,8 +73,7 @@ const New = ({ inputs, title }) => {
   const handleAdd = async(e) => {
     e.preventDefault()
     try{
-      const res = await createUserWithEmailAndPassword(auth, data.email, data.password);
-      await setDoc(doc(db, "users", res.user.uid), {
+      await addDoc(collection(db, "contacts"), {
         ...data,
         timeStamp: serverTimestamp()
       });
