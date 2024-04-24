@@ -6,6 +6,7 @@ import Single2 from "./pages/single/Single2";
 import New from "./pages/new/New";
 import New2 from "./pages/new/New2";
 import Contact from "./pages/contacts/Contacts";
+import Legal from "./pages/legal/Legal";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { contactInputs, productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
@@ -45,6 +46,7 @@ function App() {
                 element={<RequrieAuth><New2 inputs={contactInputs} title="Add New Contact" /></RequrieAuth>}
               />
             </Route>
+            <Route path="legal" element={<Legal />} />
           </Route>
         </Routes>
       </BrowserRouter>

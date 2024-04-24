@@ -38,18 +38,75 @@ const Calendar = ({ title }) => {
       
         const isSelected =
           !props.outsideCurrentMonth && highlightedDays.indexOf(props.day.date()) >= 0;
-      
-        return (
-          <StyledBadge
-            key={props.day.toString()}
-            overlap="circular"
-            badgeContent={isSelected ? '1' : undefined}
-            color="secondary"
-          >
-            <PickersDay {...other} outsideCurrentMonth={outsideCurrentMonth} day={day} />
-          </StyledBadge>
-        );
+        
+          switch(highlightedDays.indexOf(props.day.date())) {
+            case 0:
+              return (
+                <a href="#event0"><StyledBadge
+                  key={props.day.toString()}
+                  overlap="circular"
+                  badgeContent={isSelected ? '1' : undefined}
+                  color="secondary"
+                >
+                  <PickersDay {...other} outsideCurrentMonth={outsideCurrentMonth} day={day} />
+                  
+                </StyledBadge></a>
+              );
+            case 1:
+              return (
+                <a href="#event1"><StyledBadge
+                  key={props.day.toString()}
+                  overlap="circular"
+                  badgeContent={isSelected ? '1' : undefined}
+                  color="secondary"
+                >
+                  <PickersDay {...other} outsideCurrentMonth={outsideCurrentMonth} day={day} />
+                  
+                </StyledBadge></a>
+              );
+            case 2:
+              return (
+                <a href="#event2"><StyledBadge
+                  key={props.day.toString()}
+                  overlap="circular"
+                  badgeContent={isSelected ? '1' : undefined}
+                  color="secondary"
+                >
+                  <PickersDay {...other} outsideCurrentMonth={outsideCurrentMonth} day={day} />
+                  
+                </StyledBadge></a>
+              );
+            default:
+              return (
+                <StyledBadge
+                  key={props.day.toString()}
+                  overlap="circular"
+                  badgeContent={isSelected ? '1' : undefined}
+                  color="secondary"
+                >
+                  <PickersDay {...other} outsideCurrentMonth={outsideCurrentMonth} day={day} />
+                  
+                </StyledBadge>
+              );
+          }
       }
+
+    const handleDateChange = (selDate) => {
+        const day = selDate.toString().substring(8,10)
+        const badge = highlightedDays.indexOf(parseInt(day))
+
+        switch(badge) {
+            case 0:
+              break;
+            case 1:
+              // code block
+              break;
+            case -1:
+                break;
+            default:
+              break;
+          }
+    }
       
 
     return (
@@ -67,8 +124,42 @@ const Calendar = ({ title }) => {
                         highlightedDays,
                         },
                     }}
+                    onChange={(selDate) => {
+                        handleDateChange(selDate.$d)
+                    }}
                     />
             </LocalizationProvider>
+            <div id="event0" class="overlay">
+              <div class="popup" >
+                  <h2>Meeting with Jeff Bezos</h2>
+                  <a class="close" href="#">&times;</a>
+                  <div class="content">
+                      <h3>3:00pm - 4:00pm</h3>
+                      <p>Discuss future plans to connect students to internship opportunities</p>
+                  </div>
+              </div>
+          </div>
+          <div id="event1" class="overlay">
+              <div class="popup" >
+                  <h2>College Fair</h2>
+                  <a class="close" href="#">&times;</a>
+                  <div class="content">
+                      <h3>9:00am - 1:30pm</h3>
+                      <p>35 colleges are coming in and students can visit booths as they please. Make sure to meet colleges at 8:30am to facilitate setup.</p>
+                      
+                  </div>
+              </div>
+          </div>
+          <div id="event2" class="overlay">
+              <div class="popup" >
+                  <h2>Forcasting Day</h2>
+                  <a class="close" href="#">&times;</a>
+                  <div class="content">
+                    <h3>11:15am - 12:15pm</h3>
+                      <p>Make sure students know the CTE opportunities available to them!</p>
+                  </div>
+              </div>
+          </div>
         </div>
     );
 };
