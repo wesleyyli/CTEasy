@@ -38,6 +38,7 @@ const Widget = ({ type }) => {
         title: "ORDERS",
         isMoney: false,
         link: "View all orders",
+        query: "users",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -54,6 +55,7 @@ const Widget = ({ type }) => {
         title: "EARNINGS",
         isMoney: true,
         link: "View net earnings",
+        query: "users",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -67,6 +69,7 @@ const Widget = ({ type }) => {
         title: "COMPANIES",
         query: "companies",
         link: "See details",
+        query: "companies",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -79,6 +82,21 @@ const Widget = ({ type }) => {
       };
       break;
     default:
+      data = {
+        title: "STAFF",
+        isMoney: false,
+        link: "See all users",
+        query: "users",
+        icon: (
+          <PersonOutlinedIcon
+            className="icon"
+            style={{
+              color: "crimson",
+              backgroundColor: "rgba(255, 0, 0, 0.2)",
+            }}
+          />
+        ),
+      };
       break;
   }
 
