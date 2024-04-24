@@ -4,8 +4,8 @@ import "./home.scss";
 import Widget from "../../components/widget/Widget";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
-import Table from "../../components/table/Table";
-import Calender from "../../components/calender/Calender";
+import Table from "../../components/table/Table2";
+import Calendar from "../../components/calendar/Calendar";
 
 const Home = () => {
   return (
@@ -23,11 +23,11 @@ const Home = () => {
           <Featured />
           <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div> */}
-        <div className="calender">
-          <Calender/>
+        <div className="calendar">
+          <Calendar />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
+          <div className="listTitle">Favorite Contacts</div>
           <Table />
         </div>
       </div>
