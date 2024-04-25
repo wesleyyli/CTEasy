@@ -57,8 +57,8 @@ const Widget = ({ type }) => {
         title: "EARNINGS",
         isMoney: true,
         link: "View net earnings",
-        href: "#",
-        query: "users",
+        href: "/contacts",
+        query: "donations",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -73,7 +73,7 @@ const Widget = ({ type }) => {
         query: "companies",
         link: "See all contacts",
         href: "/contacts",
-        query: "companies",
+        query: "contacts",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -127,6 +127,10 @@ const Widget = ({ type }) => {
 
       setAmount(lastMonthData.docs.length)
       setDiff((lastMonthData.docs.length - prevMonthData.docs.length) / (prevMonthData.docs.length) * 100)
+      if(data.query == "donations") {
+        setAmount(1000)
+        setDiff(30)
+      }
     }
     fetchData()
   }, [])
