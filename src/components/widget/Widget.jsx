@@ -21,6 +21,7 @@ const Widget = ({ type }) => {
         title: "STAFF",
         isMoney: false,
         link: "See all users",
+        href: "/users",
         query: "users",
         icon: (
           <PersonOutlinedIcon
@@ -38,6 +39,7 @@ const Widget = ({ type }) => {
         title: "ORDERS",
         isMoney: false,
         link: "View all orders",
+        href: "/users",
         query: "users",
         icon: (
           <ShoppingCartOutlinedIcon
@@ -55,6 +57,7 @@ const Widget = ({ type }) => {
         title: "EARNINGS",
         isMoney: true,
         link: "View net earnings",
+        href: "#",
         query: "users",
         icon: (
           <MonetizationOnOutlinedIcon
@@ -68,7 +71,8 @@ const Widget = ({ type }) => {
       data = {
         title: "COMPANIES",
         query: "companies",
-        link: "See details",
+        link: "See all contacts",
+        href: "/contacts",
         query: "companies",
         icon: (
           <AccountBalanceWalletOutlinedIcon
@@ -87,6 +91,7 @@ const Widget = ({ type }) => {
         isMoney: false,
         link: "See all users",
         query: "users",
+        href: "#",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -133,7 +138,7 @@ const Widget = ({ type }) => {
         <span className="counter">
           {data.isMoney && "$"} {amount}
         </span>
-        <span className="link">{data.link}</span>
+        <a href={data.href}><span className="link">{data.link}</span></a>
       </div>
       <div className="right">
         <div className={`percentage ${diff < 0 ? "negative" : "positive"}`}>

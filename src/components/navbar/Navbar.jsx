@@ -8,9 +8,11 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom"
 
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  const navigate = useNavigate();
 
   return (
     <div className="navbar">
@@ -33,20 +35,24 @@ const Navbar = () => {
           <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
           </div>
-          <div className="item">
+          {/* <div className="item">
             <NotificationsNoneOutlinedIcon className="icon" />
             <div className="counter">1</div>
           </div>
           <div className="item">
             <ChatBubbleOutlineOutlinedIcon className="icon" />
             <div className="counter">2</div>
-          </div>
+          </div> */}
           <div className="item">
-            <ListOutlinedIcon className="icon" />
+            <ListOutlinedIcon 
+              className="icon" 
+              onClick={() => navigate("/")}
+            />
+            
           </div>
           <div className="item">
             <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src="https://firebasestorage.googleapis.com/v0/b/cteasy-8d916.appspot.com/o/unionlogo.png?alt=media&token=43d4142f-b98c-44e1-8c39-6ff15ad69e43"
               alt=""
               className="avatar"
             />
